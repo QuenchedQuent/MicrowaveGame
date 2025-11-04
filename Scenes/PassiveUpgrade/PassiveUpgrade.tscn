@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yrkouonq6x6g"]
+
+[ext_resource type="Script" uid="uid://b83h1bjoxgplt" path="res://Scenes/PassiveUpgrade/PassiveUpgrade.cs" id="1_lvs5o"]
+
+[node name="PassiveUpgrade" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Passive Updgrade (10)"
+script = ExtResource("1_lvs5o")
