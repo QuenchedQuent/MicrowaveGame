@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://clr2gyktqf2cs"]
+
+[ext_resource type="PackedScene" uid="uid://csb0g0yckeu8h" path="res://Scenes/MicrowaveButton/MicrowaveButton.tscn" id="1_fl0c3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fl0c3"]
+font_size = 48
+
+[node name="MainInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.589096, 0.589096, 0.589096, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MicrowaveButton" parent="HBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_scoreLabel") instance=ExtResource("1_fl0c3")]
+layout_mode = 2
+size_flags_vertical = 3
+_scoreLabel = NodePath("../../../MarginContainer2/VBoxContainer2/HBoxContainer/ScoreLabel")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 60
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "SCORE:"
+label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0000000"
+label_settings = SubResource("LabelSettings_fl0c3")
