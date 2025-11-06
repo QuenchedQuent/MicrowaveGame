@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://clr2gyktqf2cs"]
+[gd_scene load_steps=5 format=3 uid="uid://clr2gyktqf2cs"]
 
+[ext_resource type="Script" uid="uid://frwxyrrtusd4" path="res://Scenes/MainInterface/MainInterface.cs" id="1_3u036"]
 [ext_resource type="PackedScene" uid="uid://csb0g0yckeu8h" path="res://Scenes/MicrowaveButton/MicrowaveButton.tscn" id="1_fl0c3"]
+[ext_resource type="PackedScene" uid="uid://yrkouonq6x6g" path="res://Scenes/PassiveUpgrade/PassiveUpgrade.tscn" id="2_g4rmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fl0c3"]
 font_size = 48
 
-[node name="MainInterface" type="Control"]
+[node name="MainInterface" type="Control" node_paths=PackedStringArray("_scoreLabel", "_upgradesLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3u036")
+_scoreLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer/ScoreLabel")
+_upgradesLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer2/PassiveAmtLabel")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -51,11 +56,11 @@ _scoreLabel = NodePath("../../../MarginContainer2/VBoxContainer2/HBoxContainer/S
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 120
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
@@ -71,3 +76,23 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "0000000"
 label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Passive:"
+label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="PassiveAmtLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0000000"
+label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="PassiveUpgrade" parent="HBoxContainer/MarginContainer2/VBoxContainer2" node_paths=PackedStringArray("_upgradeLabel") instance=ExtResource("2_g4rmq")]
+layout_mode = 2
+size_flags_vertical = 10
+_upgradeLabel = NodePath("../HBoxContainer2/PassiveAmtLabel")

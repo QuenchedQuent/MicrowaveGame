@@ -5,7 +5,7 @@ public partial class MicrowaveButton : TextureButton
 {
 	[Export] private Label _scoreLabel;
 
-	private int _score = 0;
+	private int _scoreIncrease = 1;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,10 +20,6 @@ public partial class MicrowaveButton : TextureButton
 
     private void OnButtonPressed()
     {
-		GD.Print("Clicked!");
-
-		_score++;
-
-		_scoreLabel.Text = _score.ToString();
+		SignalManager.EmitOnScoreUpdated(_scoreIncrease);
     }
 }
