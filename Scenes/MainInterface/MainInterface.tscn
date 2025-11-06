@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://clr2gyktqf2cs"]
+[gd_scene load_steps=5 format=3 uid="uid://clr2gyktqf2cs"]
 
+[ext_resource type="Script" uid="uid://frwxyrrtusd4" path="res://Scenes/MainInterface/MainInterface.cs" id="1_3u036"]
 [ext_resource type="PackedScene" uid="uid://csb0g0yckeu8h" path="res://Scenes/MicrowaveButton/MicrowaveButton.tscn" id="1_fl0c3"]
 [ext_resource type="PackedScene" uid="uid://yrkouonq6x6g" path="res://Scenes/PassiveUpgrade/PassiveUpgrade.tscn" id="2_g4rmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fl0c3"]
 font_size = 48
 
-[node name="MainInterface" type="Control"]
+[node name="MainInterface" type="Control" node_paths=PackedStringArray("_scoreLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3u036")
+_scoreLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer/ScoreLabel")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -88,8 +91,7 @@ size_flags_vertical = 1
 text = "0000000"
 label_settings = SubResource("LabelSettings_fl0c3")
 
-[node name="PassiveUpgrade" parent="HBoxContainer/MarginContainer2/VBoxContainer2" node_paths=PackedStringArray("_scoreLabel", "_upgradeLabel") instance=ExtResource("2_g4rmq")]
+[node name="PassiveUpgrade" parent="HBoxContainer/MarginContainer2/VBoxContainer2" node_paths=PackedStringArray("_upgradeLabel") instance=ExtResource("2_g4rmq")]
 layout_mode = 2
 size_flags_vertical = 10
-_scoreLabel = NodePath("../HBoxContainer/ScoreLabel")
 _upgradeLabel = NodePath("../HBoxContainer2/PassiveAmtLabel")

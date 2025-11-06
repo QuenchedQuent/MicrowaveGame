@@ -20,10 +20,6 @@ public partial class MicrowaveButton : TextureButton
 
     private void OnButtonPressed()
     {
-		GD.Print("Clicked!");
-
 		SignalManager.EmitOnScoreUpdated(_scoreIncrease);
-
-		_scoreLabel.Text = ScoreManager.Score.ToString("D4");
     }
 }

@@ -7,6 +7,9 @@ public partial class SignalManager : Node
 	public delegate void OnScoreUpdatedEventHandler(int points);
 
 	[Signal]
+	public delegate void OnScoreUpdateHUDEventHandler();
+
+	[Signal]
 	public delegate void OnUpgradeUpdatedEventHandler();
 
 	[Signal]
@@ -23,6 +26,11 @@ public partial class SignalManager : Node
 	{
 		Instance.EmitSignal(SignalName.OnScoreUpdated, points);
 	}
+
+	public static void EmitOnScoreUpdateHUD()
+    {
+		Instance.EmitSignal(SignalName.OnScoreUpdateHUD);
+    }
 
 	public static void EmitOnUpgradeUpdated()
 	{

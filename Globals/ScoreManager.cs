@@ -39,6 +39,7 @@ public partial class ScoreManager : Node
     public void UpdateScore(int points)
 	{
 		_score += points;
+		SignalManager.EmitOnScoreUpdateHUD();
 	}
 
 	public void UpdateUpgrade()
@@ -96,9 +97,9 @@ public partial class ScoreManager : Node
 	{
 		UpdateScore(points);
 	}
-	
-    private void OnSaveScore()
-    {
+
+	private void OnSaveScore()
+	{
 		SaveScore();
-    }
+	}
 }
