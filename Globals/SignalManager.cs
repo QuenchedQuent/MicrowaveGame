@@ -9,6 +9,9 @@ public partial class SignalManager : Node
 	[Signal]
 	public delegate void OnUpgradeUpdatedEventHandler();
 
+	[Signal]
+	public delegate void OnSaveScoreEventHandler();
+
 	public static SignalManager Instance { get; private set; }
 
 	public override void _Ready()
@@ -20,9 +23,14 @@ public partial class SignalManager : Node
 	{
 		Instance.EmitSignal(SignalName.OnScoreUpdated, points);
 	}
-	
+
 	public static void EmitOnUpgradeUpdated()
-    {
+	{
 		Instance.EmitSignal(SignalName.OnUpgradeUpdated);
+	}
+	
+	public static void EmitOnSaveScore()
+    {
+		Instance.EmitSignal(SignalName.OnSaveScore);
     }
 }

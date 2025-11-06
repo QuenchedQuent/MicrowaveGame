@@ -33,6 +33,7 @@ public partial class ScoreManager : Node
 	{
 		SignalManager.Instance.OnScoreUpdated += OnScoreUpdated;
 		SignalManager.Instance.OnUpgradeUpdated += OnUpgradeUpdated;
+		SignalManager.Instance.OnSaveScore += OnSaveScore;
     }
 
     public void UpdateScore(int points)
@@ -90,9 +91,14 @@ public partial class ScoreManager : Node
 	{
 		UpdateUpgrade();
 	}
-	
-    private void OnScoreUpdated(int points)
-    {
+
+	private void OnScoreUpdated(int points)
+	{
 		UpdateScore(points);
+	}
+	
+    private void OnSaveScore()
+    {
+		SaveScore();
     }
 }

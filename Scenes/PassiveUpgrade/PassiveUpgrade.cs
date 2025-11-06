@@ -19,7 +19,7 @@ public partial class PassiveUpgrade : Button
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
-		_score = _scoreLabel.Text.ToInt();
+		//_score = _scoreLabel.Text.ToInt();
 		ShouldButtonBeActive();
     }
 	
@@ -37,6 +37,11 @@ public partial class PassiveUpgrade : Button
 
     private void OnPressed()
 	{
+		SignalManager.EmitOnScoreUpdated(-10);
 		SignalManager.EmitOnUpgradeUpdated();
+
+		_upgradeLabel.Text = ScoreManager.Upgrades.ToString("D4");
+
+		
     }
 }
