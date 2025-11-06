@@ -37,7 +37,5 @@ public partial class PassiveUpgrade : Button
 		SignalManager.EmitOnUpgradeUpdated();
 
 		_upgradeLabel.Text = ScoreManager.Upgrades.ToString("D4");
-
-		SignalManager.EmitOnSaveScore();
 	}
 }

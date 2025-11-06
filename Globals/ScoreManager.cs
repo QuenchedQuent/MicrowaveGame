@@ -1,8 +1,6 @@
 using Godot;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class ScoreManager : Node
 {
@@ -12,6 +10,8 @@ public partial class ScoreManager : Node
 
 	private int _upgrades = 0;
 
+	private int _baseIncome = 1;
+
 	private GameScore _savedScore = new();
 
 	public GameScore SavedScore => _savedScore;
@@ -19,6 +19,8 @@ public partial class ScoreManager : Node
 	public static int Score => Instance._score;
 
 	public static int Upgrades => Instance._upgrades;
+
+	public static int BaseIncome => Instance._baseIncome;
 
 	public static ScoreManager Instance { get; private set; }
 
@@ -47,14 +49,11 @@ public partial class ScoreManager : Node
 		_upgrades += 1;
 	}
 
-	public static void ResetScore()
+	public static void ResetScoreAndUpgrades()
 	{
 		Instance._score = 0;
-	}
-
-	public static void ResetUpgrades()
-	{
 		Instance._upgrades = 0;
+		SignalManager.EmitOnScoreUpdateHUD();
 	}
 
 	private void SaveScore()
@@ -86,6 +85,12 @@ public partial class ScoreManager : Node
 				_savedScore = JsonConvert.DeserializeObject<GameScore>(jsonData) ?? new();
 			}
 		}
+
+		if (_savedScore != null)
+        {
+			_score = SavedScore.Score;
+			_upgrades = SavedScore.Upgrades;
+        }
 	}
 
 	private void OnUpgradeUpdated()
