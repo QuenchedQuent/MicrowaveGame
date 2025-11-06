@@ -36,9 +36,7 @@ public partial class PassiveUpgrade : Button
     }
 
     private void OnPressed()
-    {
-		_upgradeLabel.Text = (_upgradeLabel.Text.ToInt() + 1).ToString();
-		_scoreLabel.Text = (_score - 10).ToString();
-		_score = _scoreLabel.Text.ToInt();
+	{
+		SignalManager.EmitOnUpgradeUpdated();
     }
 }
