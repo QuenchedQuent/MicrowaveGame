@@ -12,6 +12,8 @@ public partial class ScoreManager : Node
 
 	private int _baseIncome = 1;
 
+	private float _scorePerSecond = 0;
+
 	private GameScore _savedScore = new();
 
 	public GameScore SavedScore => _savedScore;
@@ -22,6 +24,8 @@ public partial class ScoreManager : Node
 
 	public static int BaseIncome => Instance._baseIncome;
 
+	public static float ScorePerSecond => Instance._scorePerSecond;
+
 	public static ScoreManager Instance { get; private set; }
 
 	public override void _Ready()
@@ -29,6 +33,8 @@ public partial class ScoreManager : Node
 		Instance = this;
 		LoadScoreAndUpgrades();
 		ConnectSignals();
+
+		_scorePerSecond = _upgrades;
 	}
 
 	private void ConnectSignals()
@@ -47,7 +53,14 @@ public partial class ScoreManager : Node
 	public void UpdateUpgrade()
 	{
 		_upgrades += 1;
+		_scorePerSecond = _upgrades;
+		SignalManager.EmitOnScoreUpdateHUD();
 	}
+
+	public void AddSps(float amount)
+    {
+		_scorePerSecond += amount;
+    }
 
 	public static void ResetScoreAndUpgrades()
 	{
@@ -91,6 +104,7 @@ public partial class ScoreManager : Node
 			_score = SavedScore.Score;
 			_upgrades = SavedScore.Upgrades;
         }
+		SignalManager.EmitOnScoreUpdateHUD();
 	}
 
 	private void OnUpgradeUpdated()

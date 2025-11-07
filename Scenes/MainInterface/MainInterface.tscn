@@ -7,7 +7,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_fl0c3"]
 font_size = 48
 
-[node name="MainInterface" type="Control" node_paths=PackedStringArray("_scoreLabel", "_upgradesLabel")]
+[node name="MainInterface" type="Control" node_paths=PackedStringArray("_scoreLabel", "_upgradesLabel", "_scorePerSecondLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_3u036")
 _scoreLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer/ScoreLabel")
 _upgradesLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer2/PassiveAmtLabel")
+_scorePerSecondLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer3/ScorePerSecondLabel")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -87,6 +88,21 @@ text = "Passive:"
 label_settings = SubResource("LabelSettings_fl0c3")
 
 [node name="PassiveAmtLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0000000"
+label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "SPS:"
+label_settings = SubResource("LabelSettings_fl0c3")
+
+[node name="ScorePerSecondLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "0000000"
