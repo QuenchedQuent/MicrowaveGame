@@ -48,10 +48,9 @@ theme_override_constants/margin_bottom = 120
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MicrowaveButton" parent="HBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("_scoreLabel") instance=ExtResource("1_fl0c3")]
+[node name="MicrowaveButton" parent="HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_fl0c3")]
 layout_mode = 2
 size_flags_vertical = 3
-_scoreLabel = NodePath("../../../MarginContainer2/VBoxContainer2/HBoxContainer/ScoreLabel")
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
